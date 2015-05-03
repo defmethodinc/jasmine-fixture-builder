@@ -2,7 +2,7 @@
 
 Jasmine Fixture Builder (or "JazzFix" for short) allows you to generate fixtures for your jasmine specs based on the DOM your application renders. Don't let your jasmine fixtures get stale and lie to you - use JazzFix to keep your application's DOM and jasmine specs in sync!
 
-JazzFix leverages the fixture loading ability of [jasmine-jquery](https://github.com/velesin/jasmine-jquery) along with the clean DOM rendering that [rspec-rails](https://github.com/rspec/rspec-rails) [view specs](https://github.com/rspec/rspec-rails#view-specs) provide. 
+JazzFix leverages the fixture loading ability of [jasmine-jquery](https://github.com/velesin/jasmine-jquery) along with the clean DOM rendering that [rspec-rails](https://github.com/rspec/rspec-rails) [view specs](https://github.com/rspec/rspec-rails#view-specs) provide. JazzFix owes a debt of gratitude to the work and subsequent [experience report](http://pivotallabs.com/javascriptspecs-bind-reality/) from JB Steadman.
 
 ## Installation
 
