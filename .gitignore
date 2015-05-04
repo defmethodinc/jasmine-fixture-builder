@@ -7,3 +7,5 @@
 /pkg/
 /spec/reports/
 /tmp/
+
+jasmine_fixture_builder-*.gem
