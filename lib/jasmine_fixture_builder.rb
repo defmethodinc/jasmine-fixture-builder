@@ -1,17 +1,14 @@
 require "jasmine_fixture_builder/version"
 require "jasmine_fixture_builder/path_installer"
-require 'rspec/expectations'
+require "jasmine_fixture_builder/rspec_matchers"
+require "jasmine_fixture_builder/fixture_writer"
 
 module JasmineFixtureBuilder
-  require "jasmine_fixture_builder/railtie" if defined?(Rails)
+  JAZZ_FIX_PATHS = {
+    fixture_path: "spec/javascripts/fixtures",
+    fixture_builder_path: "spec/javascripts/fixture_builders"
+  }
 
-  RSpec::Matchers.define :save_fixture do |markup, fixture|
-    fixture_path = Rails.root.join('spec/javascripts/fixtures')
-    Dir.mkdir(fixture_path) unless File.exists?(fixture_path)
-    fixture_file = File.join(fixture_path, fixture)
-    File.open(fixture_file, 'w') do |file|
-      file.puts(markup)
-    end
-  end
+  require "jasmine_fixture_builder/railtie" if defined?(Rails)
 end
 
