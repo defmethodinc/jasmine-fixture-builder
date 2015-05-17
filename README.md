@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/defmethodinc/jasmine-fixture-builder.svg?branch=master)](https://travis-ci.org/defmethodinc/jasmine-fixture-builder)
 # Jasmine Fixture Builder
 
 Jasmine Fixture Builder (or "JazzFix" for short) allows you to generate fixtures for your jasmine specs based on the DOM your application renders. Don't let your jasmine fixtures get stale and lie to you - use JazzFix to keep your application's DOM and jasmine specs in sync!
