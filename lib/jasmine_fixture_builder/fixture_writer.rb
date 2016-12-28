@@ -1,3 +1,4 @@
+require 'fileutils'
 require 'rails'
 
 module JasmineFixtureBuilder
@@ -10,6 +11,7 @@ module JasmineFixtureBuilder
 
     def write
       fixture_file = File.join(fixture_path, @fixture_name)
+      FileUtils.mkdir_p(fixture_path) unless File.directory?(fixture_path)
       File.open(fixture_file, 'w') do |file|
         file.puts(@markup)
       end

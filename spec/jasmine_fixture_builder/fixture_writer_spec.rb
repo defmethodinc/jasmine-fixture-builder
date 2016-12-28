@@ -15,6 +15,8 @@ describe JasmineFixtureBuilder::FixtureWriter do
 
       expect(File).to receive(:open).with(fixture_path.to_s, "w").and_yield(file)
       expect(file).to receive(:puts).with(markup)
+      path = Pathname.new "/path/to/rails/root/spec/javascripts/fixtures"
+      expect(FileUtils).to receive(:mkdir_p).with(path)
     end
 
     subject { fixture_writer.write }
