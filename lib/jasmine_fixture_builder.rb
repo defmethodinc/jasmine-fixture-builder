@@ -10,5 +10,9 @@ module JasmineFixtureBuilder
   }
 
   require "jasmine_fixture_builder/railtie" if defined?(Rails)
+
+  def self.root
+    @root ||= Pathname.new(File.expand_path '../..', __FILE__)
+  end
 end
 

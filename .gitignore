@@ -9,3 +9,4 @@
 /tmp/
 
 jasmine_fixture_builder-*.gem
+spec/javascripts
