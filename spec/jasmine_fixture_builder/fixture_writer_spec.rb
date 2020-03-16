@@ -9,7 +9,7 @@ describe JasmineFixtureBuilder::FixtureWriter do
 
     before do
       allow(Rails).to receive(:root).and_return(JasmineFixtureBuilder.root)
-      FileUtils.rm_rf(JasmineFixtureBuilder.root.join("spec", "javascripts"))
+      clean_fixtures!
     end
 
     subject(:writer) { -> { fixture_writer.write } }
