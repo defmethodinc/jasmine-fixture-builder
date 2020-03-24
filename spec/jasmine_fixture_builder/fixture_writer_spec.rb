@@ -4,24 +4,17 @@ describe JasmineFixtureBuilder::FixtureWriter do
 
   describe "#write" do
     let(:markup) { "<some>Markup</some>" }
-    let(:fixture_name) { "some_markup.html" }
-    let(:fixture_writer) { described_class.new(markup, fixture_name) }
-    let(:rails_root) { "/path/to/rails/root" }
-    let(:fixture_path) { Pathname.new(rails_root + "/" + JasmineFixtureBuilder::JAZZ_FIX_PATHS[:fixture_path] + "/" + fixture_name) }
-    let(:file) { double("a file") }
+    let(:fixture_writer) { described_class.new(markup, "subdir/some_markup.html") }
+    let(:fixture_name) { JasmineFixtureBuilder.root.join("spec", "javascripts", "fixtures", "subdir", "some_markup.html") }
 
     before do
-      allow(Rails).to receive(:root) { Pathname.new(rails_root) }
-
-      expect(File).to receive(:open).with(fixture_path.to_s, "w").and_yield(file)
-      expect(file).to receive(:puts).with(markup)
-      path = Pathname.new "/path/to/rails/root/spec/javascripts/fixtures"
-      expect(FileUtils).to receive(:mkdir_p).with(path)
+      allow(Rails).to receive(:root).and_return(JasmineFixtureBuilder.root)
+      clean_fixtures!
     end
 
-    subject { fixture_writer.write }
+    subject(:writer) { -> { fixture_writer.write } }
 
-    it { is_expected.to be_nil }
+    it { is_expected.to change { File.read(fixture_name) rescue nil }.to("#{markup}\n") }
   end
 end
 
